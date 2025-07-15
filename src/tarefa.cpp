@@ -13,6 +13,16 @@ std::string Tarefa::getDescricao() const
     return descricao;
 }
 
+bool Tarefa::getConcluida() const
+{
+    return concluida;
+}
+
+int Tarefa::getPrioridade() const
+{
+    return prioridade;
+}
+
 void Tarefa::marcarComoConcluida()
 {
     concluida = true;
@@ -25,11 +35,11 @@ bool Tarefa::operator<(const Tarefa &outra) const
 
 std::ostream &operator<<(std::ostream &out, const Tarefa &t)
 {
-    out << t.descricao << "\t" << "Prioridade (" << t.prioridade << ")" << "\t" << (t.concluida ? "Concluida" : "Nao concluida") << std::endl;
+    out << t.getDescricao() << "\t" << "Prioridade (" << t.getPrioridade() << ")" << "\t" << (t.getConcluida() ? "Concluida" : "Nao concluida") << std::endl;
     return out;
 }
 
 bool compararPorPrioridade(const Tarefa &t1, const Tarefa &t2)
 {
-    return t1.prioridade > t2.prioridade;
+    return t1.getPrioridade() > t2.getPrioridade();
 }
